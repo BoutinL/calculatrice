@@ -46,26 +46,27 @@
             $nombre1 =  str_replace(',' , '.' , $_POST['nombre1']);
             $nombre2 = str_replace(',' , '.' , $_POST['nombre2']);
             echo "Nombre 1: $nombre1 <br> Nombre 2: $nombre2 <br> Résultat: ";
-        }
-        if (is_numeric($nombre1) === true && is_numeric($nombre2) === true){
-            $nombre1 = floatval($nombre1);
-            $nombre2 = floatval($nombre2);
-            switch($_POST['operateur']){
-                case 'addition':
-                    echo $nombre1 + $nombre2;
-                    break;
-                case 'soustraction':
-                    echo $nombre1 - $nombre2;
-                    break;
-                case 'multiplication':
-                    echo $nombre1 * $nombre2;
-                    break;
-                case 'division':
-                    echo $nombre2 == 0 ? "Vous ne pouvez pas diviser un nombre par 0 !" : $nombre1 / $nombre2 ;
-                    break;
-            };
-        }elseif(is_numeric($nombre1) === false || is_numeric($nombre2) === false){
-            echo "Veuillez renseigner une chaîne numérique !";
+            if (is_numeric($nombre1) === true && is_numeric($nombre2) === true){
+                $nombre1 = floatval($nombre1);
+                $nombre2 = floatval($nombre2);
+                $operateur =  $_POST['operateur'];
+                switch($operateur){
+                    case 'addition':
+                        echo $nombre1 + $nombre2;
+                        break;
+                    case 'soustraction':
+                        echo $nombre1 - $nombre2;
+                        break;
+                    case 'multiplication':
+                        echo $nombre1 * $nombre2;
+                        break;
+                    case 'division':
+                        echo $nombre2 == 0 ? "Vous ne pouvez pas diviser un nombre par 0 !" : $nombre1 / $nombre2 ;
+                        break;
+                };
+            }elseif(is_numeric($nombre1) === false || is_numeric($nombre2) === false){
+                echo "Veuillez renseigner une chaîne numérique !";
+            }
         }
     ?>
 </body>
